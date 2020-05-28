@@ -66,6 +66,7 @@
     })();
     </script>
     <!--End of Tawk.to Script-->
+    <script src="https://sleeknotestaticcontent.sleeknote.com/covid.js#headline=COVID-19%20informations&text=Due%20to%20COVID-19%20situation%20worldwide.%20Deliveries%20might%20delay%20due%20to%20lockdowns.But%20we%20are%20still%20on%20operations%20and%20working%20hard%20day%20and%20night%20so%20that%20our%20customers%20do%20not%20face%20the%20delays%20in%20deliveries.%20Stay%20home%20&%20Stay%20safe.%20We%20are%20here%20to%20fullfill%20your%20needs.&button=Read%20more&url=https://ekomalls.com/corona-update" async></script>
 </head>
 
 <body>
@@ -247,15 +248,11 @@
                                 <div class="mega-menu__column">
                                     <h4>About Ekomalls<span class="sub-toggle"></span></h4>
                                     <ul class="mega-menu__list">
-                                        <li class="current-menu-item "><a href="about-us.html">About Us</a>
+                                        <li class="current-menu-item "><a href="{{ route('frontend.about') }}">About Us</a>
                                         </li>
                                         <li class="current-menu-item "><a href="contact-us.html">Contact</a>
                                         </li>
-                                        <li class="current-menu-item "><a href="faqs.html">Faqs</a>
-                                        </li>
-                                        <li class="current-menu-item "><a href="comming-soon.html">Comming Soon</a>
-                                        </li>
-                                        <li class="current-menu-item "><a href="404-page.html">404 Page</a>
+                                        <li class="current-menu-item "><a href="{{ route('frontend.faq') }}">Faqs</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -451,15 +448,11 @@
                         <div class="mega-menu__column">
                             <h4>About Ekomalls<span class="sub-toggle"></span></h4>
                             <ul class="mega-menu__list">
-                                <li class="current-menu-item "><a href="about-us.html">About Us</a>
+                                <li class="current-menu-item "><a href="{{ route('frontend.about') }}">About Us</a>
                                 </li>
                                 <li class="current-menu-item "><a href="contact-us.html">Contact</a>
                                 </li>
-                                <li class="current-menu-item "><a href="faqs.html">Faqs</a>
-                                </li>
-                                <li class="current-menu-item "><a href="comming-soon.html">Comming Soon</a>
-                                </li>
-                                <li class="current-menu-item "><a href="404-page.html">404 Page</a>
+                                <li class="current-menu-item "><a href="{{ route('frontend.faq') }}">Faqs</a>
                                 </li>
                             </ul>
                         </div>
@@ -540,29 +533,24 @@
                 <aside class="widget widget_footer">
                     <h4 class="widget-title">Quick links</h4>
                     <ul class="ps-list--link">
-                        <li><a href="#">Policy</a></li>
+                        <li><a href="{{ route('frontend.policy') }}">Policy</a></li>
                         <li><a href="#">Term & Condition</a></li>
-                        <li><a href="#">Shipping</a></li>
-                        <li><a href="#">Return</a></li>
-                        <li><a href="faqs.html">FAQs</a></li>
+                        <li><a href="{{ route('frontend.faq') }}">FAQs</a></li>
                     </ul>
                 </aside>
                 <aside class="widget widget_footer">
                     <h4 class="widget-title">Company</h4>
                     <ul class="ps-list--link">
-                        <li><a href="about-us.html">About Us</a></li>
-                        <li><a href="#">Affilate</a></li>
-                        <li><a href="#">Career</a></li>
+                        <li><a href="{{ route('frontend.about') }}">About Us</a></li>
                         <li><a href="contact-us.html">Contact</a></li>
                     </ul>
                 </aside>
                 <aside class="widget widget_footer">
-                    <h4 class="widget-title">Bussiness</h4>
+                    <h4 class="widget-title">Business</h4>
                     <ul class="ps-list--link">
-                        <li><a href="#">Our Press</a></li>
                         <li><a href="{{ route('checkout.index') }}">Checkout</a></li>
-                        <li><a href="my-account.html">My account</a></li>
-                        <li><a href="shop-default.html">Shop</a></li>
+                        <li><a href="{{ url('/home') }}">My account</a></li>
+                        <li><a href="{{ route('all.stores') }}">Shop</a></li>
                     </ul>
                 </aside>
             </div>

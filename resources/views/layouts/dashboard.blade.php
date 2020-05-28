@@ -133,6 +133,24 @@
               <span class="menu-item-label">User Wallets</span>
             </div><!-- menu-item -->
           </a><!-- sl-menu-link -->
+          <a href="{{ route('about.index') }}" class="sl-menu-link  @yield('about')">
+            <div class="sl-menu-item">
+              <i class="fas fa-info tx-24"></i>
+              <span class="menu-item-label">About Ekomalls</span>
+            </div><!-- menu-item -->
+          </a><!-- sl-menu-link -->
+          <a href="{{ route('faqs.index') }}" class="sl-menu-link  @yield('faqs')">
+            <div class="sl-menu-item">
+              <i class="fas fa-question tx-22"></i>
+              <span class="menu-item-label">Frequently Asked Questions</span>
+            </div><!-- menu-item -->
+          </a><!-- sl-menu-link -->
+          <a href="{{ route('policies.index') }}" class="sl-menu-link  @yield('policy')">
+            <div class="sl-menu-item">
+              <i class="fas fa-info tx-22"></i>
+              <span class="menu-item-label">Policy</span>
+            </div><!-- menu-item -->
+          </a><!-- sl-menu-link -->
 
           {{-- Master Admin menu End --}}
 
@@ -200,6 +218,24 @@
             <div class="sl-menu-item">
               <i class="fas fa-wallet tx-24"></i>
               <span class="menu-item-label">User Wallets</span>
+            </div><!-- menu-item -->
+          </a><!-- sl-menu-link -->
+          <a href="{{ route('about.index') }}" class="sl-menu-link  @yield('about')">
+            <div class="sl-menu-item">
+              <i class="fas fa-info tx-24"></i>
+              <span class="menu-item-label">About Ekomalls</span>
+            </div><!-- menu-item -->
+          </a><!-- sl-menu-link -->
+          <a href="{{ route('faqs.index') }}" class="sl-menu-link  @yield('faqs')">
+            <div class="sl-menu-item">
+              <i class="fas fa-question tx-22"></i>
+              <span class="menu-item-label">Frequently Asked Questions</span>
+            </div><!-- menu-item -->
+          </a><!-- sl-menu-link -->
+          <a href="{{ route('policies.index') }}" class="sl-menu-link  @yield('policy')">
+            <div class="sl-menu-item">
+              <i class="fas fa-info tx-22"></i>
+              <span class="menu-item-label">Policy</span>
             </div><!-- menu-item -->
           </a><!-- sl-menu-link -->
 

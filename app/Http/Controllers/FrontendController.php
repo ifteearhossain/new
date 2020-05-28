@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Faq;
+use App\User;
+use App\About;
+use App\Policy;
 use App\Product;
 use App\Category;
 use Illuminate\Http\Request;
@@ -34,7 +38,26 @@ class FrontendController extends Controller
         return view('frontend.search_from_products', compact('filtered_products'));
     }
 
-    
+    public function about()
+    {
+        $about = About::first();
+        $totalProducts   = Product::count();
+        $totalSellers    = User::where('user_role', 2)->count(); 
+        $totalCustomers  = User::where('user_role', 3)->count(); 
+        return view('frontend.about', compact('about', 'totalProducts', 'totalSellers', 'totalCustomers'));
+    }
+
+    public function faq()
+    {
+        $faqs = Faq::latest()->get();
+        return view('frontend.faq', compact('faqs'));
+    }
+
+    public function policy()
+    {
+        $policies = Policy::all();
+        return view('frontend.policy', compact('policies'));
+    }
 
 
     // END

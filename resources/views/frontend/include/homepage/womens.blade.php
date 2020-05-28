@@ -38,12 +38,28 @@
                         <div class="ps-product__content"><a class="ps-product__title" href="{{ route('product.details', $womens->product_slug) }}">{{ $womens->product_name }}</a>
                             <div class="ps-product__rating">
                                 <select class="ps-rating" data-read-only="true">
+                                @if(average_stars($womens->id) == 1)
+                                    <option value="1">1</option>
+                                @elseif(average_stars($womens->id) == 2)
+                                    <option value="1">1</option>
+                                    <option value="1">2</option>
+                                @elseif(average_stars($womens->id) == 3)
+                                    <option value="1">1</option>
+                                    <option value="1">2</option>
+                                    <option value="1">3</option>
+                                @elseif(average_stars($womens->id) == 4)
+                                    <option value="1">1</option>
+                                    <option value="1">2</option>
+                                    <option value="1">3</option>
+                                    <option value="1">4</option>
+                                @elseif(average_stars($womens->id) == 5)
                                     <option value="1">1</option>
                                     <option value="1">2</option>
                                     <option value="1">3</option>
                                     <option value="1">4</option>
                                     <option value="2">5</option>
-                                </select><span>01</span>
+                                @endif
+                            </select><span>({{ reviewCount($womens->id) }} review)</span>
                             </div>
                             <p class="ps-product__price sale">${{ ($womens->discount_price != null)? $womens->discount_price : $womens->product_price }} </p>   {{-- <del>$670.00 </del> discount thakle eita use hobe --}}
                         </div>
@@ -79,12 +95,28 @@
                             <p>Brand:<a href="#">{{ $womens->product_brand }}</a></p>
                             <div class="ps-product__rating">
                                 <select class="ps-rating" data-read-only="true">
+                                @if(average_stars($womens->id) == 1)
+                                    <option value="1">1</option>
+                                @elseif(average_stars($womens->id) == 2)
+                                    <option value="1">1</option>
+                                    <option value="1">2</option>
+                                @elseif(average_stars($womens->id) == 3)
+                                    <option value="1">1</option>
+                                    <option value="1">2</option>
+                                    <option value="1">3</option>
+                                @elseif(average_stars($womens->id) == 4)
+                                    <option value="1">1</option>
+                                    <option value="1">2</option>
+                                    <option value="1">3</option>
+                                    <option value="1">4</option>
+                                @elseif(average_stars($womens->id) == 5)
                                     <option value="1">1</option>
                                     <option value="1">2</option>
                                     <option value="1">3</option>
                                     <option value="1">4</option>
                                     <option value="2">5</option>
-                                </select><span>(1 review)</span>
+                                @endif
+                            </select><span>({{ reviewCount($womens->id) }} review)</span>
                             </div>
                         </div>
                         <h4 class="ps-product__price sale">${{ ($womens->discount_price != null) ? $womens->discount_price : $womens->product_price }} 

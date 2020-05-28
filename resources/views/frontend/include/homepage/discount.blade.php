@@ -35,12 +35,28 @@
                         <div class="ps-product__content"><a class="ps-product__title" href="{{ route('product.details', $discounted->product_slug) }}">{{ $discounted->product_name }}</a>
                             <div class="ps-product__rating">
                                 <select class="ps-rating" data-read-only="true">
+                                    @if(average_stars($discounted->id) == 1)
+                                    <option value="1">1</option>
+                                @elseif(average_stars($discounted->id) == 2)
+                                    <option value="1">1</option>
+                                    <option value="1">2</option>
+                                @elseif(average_stars($discounted->id) == 3)
+                                    <option value="1">1</option>
+                                    <option value="1">2</option>
+                                    <option value="1">3</option>
+                                @elseif(average_stars($discounted->id) == 4)
+                                    <option value="1">1</option>
+                                    <option value="1">2</option>
+                                    <option value="1">3</option>
+                                    <option value="1">4</option>
+                                @elseif(average_stars($discounted->id) == 5)
                                     <option value="1">1</option>
                                     <option value="1">2</option>
                                     <option value="1">3</option>
                                     <option value="1">4</option>
                                     <option value="2">5</option>
-                                </select><span>01</span>
+                                @endif
+                            </select><span>({{ reviewCount($discounted->id) }} review)</span>
                             </div>
                         </div>
                     </div>
@@ -81,12 +97,28 @@
                                     <p>Brand:<a href="#">{{ $discounted->product_brand }}</a></p>
                                     <div class="ps-product__rating">
                                         <select class="ps-rating" data-read-only="true">
-                                            <option value="1">1</option>
-                                            <option value="1">2</option>
-                                            <option value="1">3</option>
-                                            <option value="1">4</option>
-                                            <option value="2">5</option>
-                                        </select><span>(1 review)</span>
+                                            @if(average_stars($discounted->id) == 1)
+                                                <option value="1">1</option>
+                                            @elseif(average_stars($discounted->id) == 2)
+                                                <option value="1">1</option>
+                                                <option value="1">2</option>
+                                            @elseif(average_stars($discounted->id) == 3)
+                                                <option value="1">1</option>
+                                                <option value="1">2</option>
+                                                <option value="1">3</option>
+                                            @elseif(average_stars($discounted->id) == 4)
+                                                <option value="1">1</option>
+                                                <option value="1">2</option>
+                                                <option value="1">3</option>
+                                                <option value="1">4</option>
+                                            @elseif(average_stars($discounted->id) == 5)
+                                                <option value="1">1</option>
+                                                <option value="1">2</option>
+                                                <option value="1">3</option>
+                                                <option value="1">4</option>
+                                                <option value="2">5</option>
+                                            @endif
+                                        </select><span>({{ reviewCount($discounted->id) }} review)</span>
                                     </div>
                                 </div>
                                 <h4 class="ps-product__price sale">${{ $discounted->discount_price }} <del>${{ $discounted->product_price }} </del> <small class="ml-5">{{ floor(($discounted->product_price - $discounted->discount_price) / ($discounted->product_price) * 100)  }}% off</small></h4>
@@ -109,7 +141,6 @@
                                         <input type="hidden" value="{{ $discounted->id }}" name="product_id">
                                         <button class="ps-btn ps-btn--black" type="submit">Add to cart</button>
                                     </form>
-                                    <a class="ps-btn" href="#">Buy Now</a>
                                 </div>
                             </div>
                         </div>

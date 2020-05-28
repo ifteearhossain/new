@@ -28,7 +28,9 @@ Auth::routes(['verify' => true]);
 
 Route::get('/', 'FrontendController@index')->name('frontend.index');
 Route::get('/search', 'FrontendController@search')->name('homePage.search');
-
+Route::get('/about/us/', 'FrontendController@about')->name('frontend.about');
+Route::get('/frequently/asked/questions', 'FrontendController@faq')->name('frontend.faq');
+Route::get('/policy', 'FrontendController@policy')->name('frontend.policy');
 
 // END FrontendController
 
@@ -185,6 +187,7 @@ Route::post('/pay/seller/', 'HomeController@payseller')->name('pay.seller');
  Route::get('/stores', 'VendorController@storelist')->name('all.stores');
  Route::get('/stores/old/new', 'VendorController@storeoldtonew')->name('all.storesold');
  Route::get('/stores/{store_name}', 'VendorController@show')->name('single.store');
+ Route::get('/stores/{store_name}/about', 'VendorController@about')->name('single.about');
  Route::get('/store/search/{store_name}', 'VendorController@storesearch')->name('store.search');
 
 // END VendorController
@@ -207,3 +210,20 @@ Route::post('/user/withdraw', 'UserWalletController@withdraw')->name('user.withd
 Route::get('/user/{withdraw_id}/transfer', 'UserWalletController@transferdone')->name('transfer.done');
 
 // END UserWalletController
+
+
+// CoronaController
+Route::get('/corona-update', 'CoronaController@index');
+// END CoronaController
+
+// AboutController 
+ Route::resource('about', 'AboutController');
+// END AboutController
+
+// FaqController 
+  Route::resource('faqs', 'FaqController');
+// END FaqController
+
+// PolicyController 
+  Route::resource('policies', 'PolicyController' );
+// END PolicyController

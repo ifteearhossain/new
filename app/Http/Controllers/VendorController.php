@@ -29,6 +29,11 @@ class VendorController extends Controller
        $store = Shop::where('shop_name', $store_name)->first();
        return view('frontend.singleStore', compact('store'));
    }
+   public function about($store_name)
+   {
+       $store = Shop::where('shop_name', $store_name)->first();
+       return view('frontend.singleStoreAbout', compact('store'));
+   }
 
    public function storesearch($store_name)
    {

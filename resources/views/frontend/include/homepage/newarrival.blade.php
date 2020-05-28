@@ -21,12 +21,28 @@
                          
                             <div class="ps-product__rating">
                                 <select class="ps-rating" data-read-only="true">
+                                @if(average_stars($product->id) == 1)
+                                    <option value="1">1</option>
+                                @elseif(average_stars($product->id) == 2)
+                                    <option value="1">1</option>
+                                    <option value="1">2</option>
+                                @elseif(average_stars($product->id) == 3)
+                                    <option value="1">1</option>
+                                    <option value="1">2</option>
+                                    <option value="1">3</option>
+                                @elseif(average_stars($product->id) == 4)
+                                    <option value="1">1</option>
+                                    <option value="1">2</option>
+                                    <option value="1">3</option>
+                                    <option value="1">4</option>
+                                @elseif(average_stars($product->id) == 5)
                                     <option value="1">1</option>
                                     <option value="1">2</option>
                                     <option value="1">3</option>
                                     <option value="1">4</option>
                                     <option value="2">5</option>
-                                </select><span>04</span>
+                                @endif
+                            </select><span>({{ reviewCount($product->id) }} review)</span>
                             </div>
                             @if($product->discount_price != null)
                               <div class="ps-product__badge">-{{ floor(($product->product_price - $product->discount_price)/($product->product_price) * 100) }}%</div>

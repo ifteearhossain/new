@@ -68,9 +68,12 @@ class Kernel extends HttpKernel
         'customercheck' => \App\Http\Middleware\Customer::class,
         'masteradmin' => \App\Http\Middleware\MasterAdmin::class,
         'checkrolecategory' => \App\Http\Middleware\CheckRoleCategory::class,
-        'checkrolecoupon' => \App\Http\Middleware\CheckRoleCategory::class,
+        'checkrolecoupon' => \App\Http\Middleware\CheckRoleCoupon::class,
         'ifcustomer' => \App\Http\Middleware\IfCustomer::class,
-        'checkrolesale' => \App\Http\Middleware\IfCustomer::class,
-        'checkrolewallet' => \App\Http\Middleware\IfCustomer::class,
+        'checkrolesale' => \App\Http\Middleware\CheckRoleSale::class,
+        'checkrolewallet' => \App\Http\Middleware\CheckRoleWallet::class,
+        'checkroleabout' => \App\Http\Middleware\CheckRoleAbout::class,
+        'checkrolefaq' => \App\Http\Middleware\CheckRoleFaq::class,
+        'checkrolepolicy' => \App\Http\Middleware\CheckRolePolicy::class,
     ];
 }

@@ -8,6 +8,26 @@
     active
 @endsection
 
+@section('breadcrumb')
+
+  <nav class="breadcrumb sl-breadcrumb">
+    <a class="breadcrumb-item" href="{{ route('home') }}">
+     @if (Auth::user()->user_role == 0)
+       Master Admin Home
+     @elseif (Auth::user()->user_role == 1)
+       Admin Dashboard
+     @elseif (Auth::user()->user_role == 2)
+       Seller Dashboard
+     @else
+       Customer Dashboard
+     @endif
+     </a>
+    {{-- <a class="breadcrumb-item" href="index.html">Pages</a> --}}
+    <span class="breadcrumb-item active">Wallet</span>
+  </nav>
+
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">
