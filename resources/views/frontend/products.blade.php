@@ -18,21 +18,12 @@
         <div class="ps-shop-banner">
             <div class="ps-shop-banner">
                 <div class="ps-carousel--nav-inside owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="1" data-owl-item-xs="1" data-owl-item-sm="1" data-owl-item-md="1" data-owl-item-lg="1" data-owl-duration="1000" data-owl-mousedrag="on">
-                    <a href="#"><img src="{{ asset('frontend_assets/img/slider/shop-default/1.jpg') }}" alt=""></a>
-                    <a href="#"><img src="{{ asset('frontend_assets/img/slider/shop-default/2.jpg') }}" alt=""></a>
+                    @foreach ($banners as $banner)   
+                    <a href="{{ route('front.product') }}"><img src="{{ asset('uploads/banners/productpageBig') }}/{{ $banner->banner_image }}" alt=""></a>
+                    @endforeach
                 </div>
             </div>
         </div>
-        {{-- <div class="ps-shop-brand">
-            <a href="#"><img src="{{ asset('frontend_assets/img/brand/1.jpg') }}" alt=""></a>
-            <a href="#"><img src="{{ asset('frontend_assets/img/brand/2.jpg') }}" alt=""></a>
-            <a href="#"><img src="{{ asset('frontend_assets/img/brand/3.jpg') }}" alt=""></a>
-            <a href="#"><img src="{{ asset('frontend_assets/img/brand/4.jpg') }}" alt=""></a>
-            <a href="#"><img src="{{ asset('frontend_assets/img/brand/5.jpg') }}" alt=""></a>
-            <a href="#"><img src="{{ asset('frontend_assets/img/brand/6.jpg') }}" alt=""></a>
-            <a href="#"><img src="{{ asset('frontend_assets/img/brand/7.jpg') }}" alt=""></a>
-            <a href="#"><img src="{{ asset('frontend_assets/img/brand/8.jpg') }}" alt=""></a>
-        </div> --}}
         <div class="ps-shop-categories">
             <div class="row align-content-lg-stretch">
                 @foreach ($categories as $category)

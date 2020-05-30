@@ -20,6 +20,13 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        \RenatoMarinho\LaravelPageSpeed\Middleware\InlineCss::class,
+        \RenatoMarinho\LaravelPageSpeed\Middleware\ElideAttributes::class,
+        \RenatoMarinho\LaravelPageSpeed\Middleware\InsertDNSPrefetch::class,
+        \RenatoMarinho\LaravelPageSpeed\Middleware\RemoveComments::class,
+        // \RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls::class,
+        \RenatoMarinho\LaravelPageSpeed\Middleware\RemoveQuotes::class,
+        \RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class,
     ];
 
     /**
@@ -77,5 +84,7 @@ class Kernel extends HttpKernel
         'checkrolepolicy' => \App\Http\Middleware\CheckRolePolicy::class,
         'checkroletoc' => \App\Http\Middleware\CheckRoleToc::class,
         'checkrolecontact' => \App\Http\Middleware\CheckRoleContact::class,
+        'checkrolepending' => \App\Http\Middleware\CheckRolePending::class,
+        'checkrolebanner' => \App\Http\Middleware\CheckRoleBanner::class,
     ];
 }

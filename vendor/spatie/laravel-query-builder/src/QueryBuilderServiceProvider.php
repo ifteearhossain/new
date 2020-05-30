@@ -23,4 +23,13 @@ class QueryBuilderServiceProvider extends ServiceProvider
             return QueryBuilderRequest::fromRequest($app['request']);
         });
     }
+
+    public function provides()
+    {
+        // TODO: implement DeferrableProvider when Laravel 5.7 support is dropped.
+
+        return [
+            QueryBuilderRequest::class,
+        ];
+    }
 }

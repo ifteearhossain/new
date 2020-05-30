@@ -12,6 +12,11 @@ use App\Contact;
 use App\Product;
 use App\Category;
 use Carbon\Carbon;
+use App\BannerHomeBig;
+use App\BannerFooterBig;
+use App\BannerHomeSmall;
+use App\BannerHomeMiddle;
+use App\BannerFooterSmall;
 use App\Mail\ContactMailer;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
@@ -26,11 +31,16 @@ class FrontendController extends Controller
 
          'categories'          => Category::orderBy('category_name')->get(),
          'productsElectronics' => Product::where('category_id', 3)->get(), 
-         'productsMens'        => Product::where('category_id', 1)->get(), 
-         'productsWomens'      => Product::where('category_id', 12)->get(),
-         'productsSports'      => Product::where('category_id', 8)->get(),
-         'discountProducts'    => Product::whereNotNull('discount_price')->latest()->get(), 
+         'productsMens'        => Product::where('category_id', 8)->get(), 
+         'productsWomens'      => Product::where('category_id', 9)->get(),
+         'productsSports'      => Product::where('category_id', 18)->get(),
+         'discountProducts'    => Product::whereNotNull('discount_price')->latest()->get(),
          'products'            => Product::latest()->limit(8)->get(),
+         'bannersBig'          => BannerHomeBig::latest()->get(),
+         'bannersSmall'        => BannerHomeSmall::latest()->limit(2)->get(),
+         'bannersMiddle'       => BannerHomeMiddle::latest()->limit(3)->get(),
+         'bannersFooter'       => BannerFooterBig::latest()->first(),
+         'bannersFooterSmall'  => BannerFooterSmall::latest()->first(),
 
         ]);
     }

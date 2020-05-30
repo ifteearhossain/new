@@ -1,6 +1,3 @@
-@php
-    error_reporting(0);
-@endphp
 @extends('layouts.dashboard')
 
 @section('title')

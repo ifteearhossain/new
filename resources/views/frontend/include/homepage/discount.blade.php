@@ -71,12 +71,11 @@
 <div class="ps-home-ads">
     <div class="ps-container">
         <div class="row">
-            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 "><a class="ps-collection" href="#"><img src="{{ asset('frontend_assets/img/collection/home-1/1.jpg') }}" alt=""></a>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 "><a class="ps-collection" href="#"><img src="{{ asset('frontend_assets/img/collection/home-1/2.jpg') }}" alt=""></a>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 "><a class="ps-collection" href="#"><img src="{{ asset('frontend_assets/img/collection/home-1/3.jpg') }}" alt=""></a>
-            </div>
+             @foreach ($bannersMiddle as $bannerMiddle)
+             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 ">
+                 <a class="ps-collection" href="{{ route('front.product') }}"><img src="{{ asset('uploads/banners/homepageMiddle') }}/{{ $bannerMiddle->banner_image }}" alt=""></a>
+             </div>
+             @endforeach
         </div>
     </div>
 </div>

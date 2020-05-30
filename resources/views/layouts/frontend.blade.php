@@ -87,14 +87,14 @@
                                 <li class="current-menu-item menu-item-has-children has-mega-menu"><a href="{{ route('category.product', $category->id) }}">{{ $category->category_name }}</a><span class="sub-toggle"></span>
                                     <div class="mega-menu">
                                         @foreach ($category->getSubCategory as $subCategory)
-                                          <div class="mega-menu__column">
-                                               <h4>{{ $subCategory->sub_category_name }}<span class="sub-toggle"></span></h4>
-                                                <ul class="mega-menu__list">
-                                               @foreach ($subCategory->getproduct->take(4) as $product)
-                                                <li class="current-menu-item "><a href="{{ route('product.details', $product->product_slug) }}">{{ $product->product_name }}</a></li>                                                   
-                                               @endforeach     
-                                                </ul>
-                                            </div>
+                                            <div class="mega-menu__column">
+                                                <h4>{{ $subCategory->sub_category_name }}<span class="sub-toggle"></span></h4>
+                                                 <ul class="mega-menu__list">
+                                                @foreach ($subCategory->getproduct->take(4) as $product)
+                                                 <li class="current-menu-item "><a href="{{ route('product.details', $product->product_slug) }}">{{ $product->product_name }}</a></li>                                                   
+                                                @endforeach     
+                                                 </ul>
+                                             </div>
                                         @endforeach
                                     
                                     </div>
@@ -212,14 +212,18 @@
                                 <li class="current-menu-item menu-item-has-children has-mega-menu"><a href="{{ route('category.product', $category->id) }}">{{ $category->category_name }}</a><span class="sub-toggle"></span>
                                     <div class="mega-menu">
                                         @foreach ($category->getSubCategory as $subCategory)
-                                          <div class="mega-menu__column">
-                                               <h4>{{ $subCategory->sub_category_name }}<span class="sub-toggle"></span></h4>
-                                                <ul class="mega-menu__list">
-                                               @foreach ($subCategory->getproduct->take(4) as $product)
-                                                <li class="current-menu-item "><a href="{{ route('product.details', $product->product_slug) }}">{{ $product->product_name }}</a></li>                                                   
-                                               @endforeach     
-                                                </ul>
-                                            </div>
+                                          <div class="row">
+                                              <div class="col-lg-4 col-md-4 col-sm-6">
+                                                <div class="mega-menu__column">
+                                                    <h4>{{ $subCategory->sub_category_name }}<span class="sub-toggle"></span></h4>
+                                                     <ul class="mega-menu__list">
+                                                    @foreach ($subCategory->getproduct->take(4) as $product)
+                                                     <li class="current-menu-item "><a href="{{ route('product.details', $product->product_slug) }}">{{ $product->product_name }}</a></li>                                                   
+                                                    @endforeach     
+                                                     </ul>
+                                                 </div>
+                                              </div>
+                                          </div>
                                         @endforeach
                                     
                                     </div>

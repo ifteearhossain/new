@@ -71,6 +71,13 @@ class ProductController extends Controller
                 return view('backend.products.create', compact('categories', 'sub_categories', 'shops'));
             }
         }
+        elseif(user_role() == 1 || user_role() == 0)
+        {
+                $categories = Category::OrderBy('category_name', 'asc')->get();
+                $sub_categories = SubCategory::all();
+                $shops = Shop::all();
+                return view('backend.products.create', compact('categories', 'sub_categories', 'shops'));
+        }
     }
 
     /**
@@ -81,6 +88,60 @@ class ProductController extends Controller
      */
     public function store(ProductFormPost $request)
     {
+        if(user_role() == 0 || user_role() == 1)
+        {
+            $slug = Str::slug($request->product_name). '-' .Str::random(10);
+
+
+            $product_id = Product::insertGetId([
+                'product_name'              => $request->product_name,
+                'product_price'             => $request->product_price,
+                'discount_price'             => $request->discount_price,
+                'product_brand'             => $request->product_brand,
+                'category_id'               => $request->category_id,
+                'sub_category_id'           => $request->sub_category_id,
+                'product_quantity'          => $request->product_quantity,
+                'shop_id'                   => $request->shop_id,
+                'product_short_description' => $request->product_short_description,
+                'product_long_description'  => $request->product_long_description,
+                'product_thumbnail_image'   => 'default.jpg',
+                'product_slug'              => $slug,
+                'user_id'                   => Auth::id(),
+                'created_at'                => Carbon::now()
+            ]);
+    
+            $uploaded_image = $request->file('product_thumbnail_image');
+            $file_name = $product_id. '.' .$uploaded_image->getClientOriginalExtension();
+            $location = public_path('uploads/products/product_thumbnail_image/'.  $file_name);
+            Image::make($uploaded_image)->resize(489, 489)->save($location);
+    
+            Product::find($product_id)->update([
+                'product_thumbnail_image' => $file_name,
+            ]);
+    
+            if($request->hasFile('product_multiple_image'))
+            {
+                $all_images = $request->file('product_multiple_image');
+    
+            $counter = 1;
+            foreach($all_images as $single_image)
+            {
+                $filename = $product_id. '-' .$counter. '.' .$single_image->getClientOriginalExtension();
+                $newlocation = public_path('uploads/products/product_multiple_image/' . $filename);
+                Image::make($single_image)->resize(489, 489)->save($newlocation);
+    
+                ProductMultipleImage::insert([
+                    'product_multiple_image' => $filename,
+                    'product_id'             => $product_id,
+                ]);
+                $counter++;
+            }
+            }
+    
+            return redirect('products')->withSuccess('Products added successfully');
+        }
+        else 
+        {
             $slug = Str::slug($request->product_name). '-' .Str::random(10);
 
 
@@ -141,7 +202,8 @@ class ProductController extends Controller
              ]);
     
             return redirect('products')->withSuccess('Products added successfully');
-      }
+        }    
+    }
 
     /**
      * Display the specified resource.

@@ -6,6 +6,7 @@ use App\Product;
 use App\Category;
 use App\Order_list;
 use App\SubCategory;
+use App\BannerProductBig;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -24,7 +25,8 @@ class FrontProductController extends Controller
                     ->orderBy('total', 'desc')
                     ->take(10)
                     ->get();
-        return view('frontend.products', compact('all_products', 'categories', 'recommended_products','total_products', 'bestsellers'));
+        $banners = BannerProductBig::latest()->get();
+        return view('frontend.products', compact('all_products', 'categories', 'recommended_products','total_products', 'bestsellers', 'banners'));
     }
     public function indexAtoZ()
     {

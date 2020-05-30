@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->integer('user_role')->default(3);
             $table->integer('shop_id')->default(0);
             $table->string('areacode')->nullable();
-            $table->integer('phone_number')->nullable();
+            $table->bigInteger('phone_number')->nullable();
             $table->timestamp('phone_verified_at')->nullable();
             $table->integer('country_id')->nullable();
             $table->integer('state_id')->nullable();

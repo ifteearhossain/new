@@ -63,7 +63,7 @@
 
     {{-- Home Ad Starts --}}
 
-    @include('frontend.include.homepage.homead')
+    @include('frontend.include.homepage.homead', ['bannersFooter' => $bannersFooter])
 
     {{-- Home Ad Ends --}}
 

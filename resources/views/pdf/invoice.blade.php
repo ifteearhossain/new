@@ -271,13 +271,8 @@ footer {
               </tr>
               <tr>
                 <td colspan="2"></td>
-                <td colspan="2">TAX 12%</td>
-                <td>${{  ($order_details->sub_total/100) * 12 }}</td>
-              </tr>
-              <tr>
-                <td colspan="2"></td>
                 <td colspan="2">GRAND TOTAL</td>
-                <td>${{ $order_details->sub_total + ($order_details->sub_total/100) * 12  }}</td>
+                <td>${{ $order_details->sub_total }}</td>
               </tr>
             </tfoot>
           </table>

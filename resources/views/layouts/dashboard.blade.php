@@ -98,6 +98,21 @@
             <li class="nav-item"><a href="{{ route('sale.wallet') }}" class="nav-link">Paid by Ekowallet</a></li>
             <li class="nav-item"><a href="{{ route('sale.bank') }}" class="nav-link">Paid by Bank</a></li>
           </ul>
+          <a href="#" class="sl-menu-link @yield('banner')">
+            <div class="sl-menu-item">
+              <i class="far fa-flag tx-24"></i>
+              <span class="menu-item-label">All Banners</span>
+              <i class="menu-item-arrow fa fa-angle-down"></i>
+            </div><!-- menu-item -->
+          </a><!-- sl-menu-link -->
+          <ul class="sl-menu-sub nav flex-column">
+            <li class="nav-item"><a href="{{ route('bannerHome.big') }}" class="nav-link">Homepage Big Banners</a></li>
+            <li class="nav-item"><a href="{{ route('bannerHome.small') }}" class="nav-link">Homepage Small Banners</a></li>
+            <li class="nav-item"><a href="{{ route('bannerHome.middle') }}" class="nav-link">Homepage Middle Banners</a></li>
+            <li class="nav-item"><a href="{{ route('bannerFooter.big') }}" class="nav-link">Homepage Footer Big Banners</a></li>
+            <li class="nav-item"><a href="{{ route('bannerFooter.small') }}" class="nav-link">Homepage Footer Small Banners</a></li>
+            <li class="nav-item"><a href="{{ route('bannerProduct.big') }}" class="nav-link">Productpage Big Banners</a></li>
+          </ul>
 
           <a href="{{ route('category.index') }}" class="sl-menu-link  @yield('category-active')">
             <div class="sl-menu-item">
@@ -139,6 +154,12 @@
             <div class="sl-menu-item">
               <i class="fas fa-envelope tx-24"></i>
               <span class="menu-item-label">Contact Page queries</span>
+            </div><!-- menu-item -->
+          </a><!-- sl-menu-link -->
+          <a href="{{ route('verification.index') }}" class="sl-menu-link  @yield('verify')">
+            <div class="sl-menu-item">
+              <i class="fas fa-user-check tx-24"></i>
+              <span class="menu-item-label">Pending Verifications</span>
             </div><!-- menu-item -->
           </a><!-- sl-menu-link -->
           <a href="{{ route('about.index') }}" class="sl-menu-link  @yield('about')">
@@ -199,6 +220,21 @@
             <li class="nav-item"><a href="{{ route('sale.wallet') }}" class="nav-link">Paid by Ekowallet</a></li>
             <li class="nav-item"><a href="{{ route('sale.bank') }}" class="nav-link">Paid by Bank</a></li>
           </ul>
+          <a href="#" class="sl-menu-link @yield('banner')">
+            <div class="sl-menu-item">
+              <i class="far fa-flag tx-24"></i>
+              <span class="menu-item-label">All Banners</span>
+              <i class="menu-item-arrow fa fa-angle-down"></i>
+            </div><!-- menu-item -->
+          </a><!-- sl-menu-link -->
+          <ul class="sl-menu-sub nav flex-column">
+            <li class="nav-item"><a href="{{ route('bannerHome.big') }}" class="nav-link">Homepage Big Banners</a></li>
+            <li class="nav-item"><a href="{{ route('bannerHome.small') }}" class="nav-link">Homepage Small Banners</a></li>
+            <li class="nav-item"><a href="{{ route('bannerHome.middle') }}" class="nav-link">Homepage Middle Banners</a></li>
+            <li class="nav-item"><a href="{{ route('bannerFooter.big') }}" class="nav-link">Homepage Footer Big Banners</a></li>
+            <li class="nav-item"><a href="{{ route('bannerFooter.small') }}" class="nav-link">Homepage Footer Small Banners</a></li>
+            <li class="nav-item"><a href="{{ route('bannerProduct.big') }}" class="nav-link">Productpage Big Banners</a></li>
+          </ul>
           <a href="{{ route('category.index') }}" class="sl-menu-link @yield('category-active')">
             <div class="sl-menu-item">
                 <i class="fa fa-tag tx-24"></i>
@@ -239,6 +275,12 @@
             <div class="sl-menu-item">
               <i class="fas fa-envelope tx-24"></i>
               <span class="menu-item-label">Contact Page queries</span>
+            </div><!-- menu-item -->
+          </a><!-- sl-menu-link -->
+          <a href="{{ route('verification.index') }}" class="sl-menu-link  @yield('verify')">
+            <div class="sl-menu-item">
+              <i class="fas fa-user-check tx-24"></i>
+              <span class="menu-item-label">Pending Verifications</span>
             </div><!-- menu-item -->
           </a><!-- sl-menu-link -->
           <a href="{{ route('about.index') }}" class="sl-menu-link  @yield('about')">

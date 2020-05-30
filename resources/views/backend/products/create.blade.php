@@ -138,14 +138,14 @@
                     @enderror
                 </div>
                 <div class="py-3">
-                    <label for="price">Product price</label>
+                    <label for="price">Product price (Place your price in USD only)</label>
                     <input class="form-control" id="price" type="text" name="product_price" placeholder="Add Product price" value="{{ isset($product)?$product->product_price : '' }}">
                     @error ('product_price')
                       <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>
                 <div class="py-3">
-                    <label for="price">Product discount Price (Optional)</label>
+                    <label for="price">Product discount Price (Optional) (Place your price in USD only)</label>
                     <input class="form-control" id="price" type="text" name="discount_price" placeholder="Add Product discount price" value="{{ isset($product)?$product->discount_price : '' }}">
                     @error ('discount_price')
                       <small class="text-danger">{{ $message }}</small>
@@ -264,7 +264,7 @@
                  @endforeach
                  @endisset
                 </div>
-                <label for="upload_multi" class="mt-3">Product Multiple Image(Optional)</label>
+                <label for="upload_multi" class="mt-3">Product Multiple Image</label>
                 <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
                     <input name="product_multiple_image[]" id="upload-multi" type="file" class="form-control" multiple>
                     @error ('product_multiple_image')

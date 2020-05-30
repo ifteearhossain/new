@@ -249,3 +249,38 @@ Route::get('/corona-update', 'CoronaController@index');
 // TocController
   Route::resource('toc', 'TocController');
 // END TocController
+
+// PendingVerificationController
+  Route::get('/pending/verify', 'PendingVerificationController@index')->name('verification.index');
+// END PendingVerificationController
+
+// BannerController 
+  Route::get('/add/banner/home/big', 'BannerController@bannerHomeBig')->name('bannerHome.big');
+  Route::post('/add/banner/home/big/post', 'BannerController@bannerHomeBigPost')->name('bannerHome.bigPost');
+  Route::get('/add/banner/home/big/delete/{banner_id}', 'BannerController@bannerHomeBigDelete')->name('bannerHome.bigDelete');
+
+
+  Route::get('/add/banner/home/small', 'BannerController@bannerHomeSmall')->name('bannerHome.small');
+  Route::post('/add/banner/home/small/post', 'BannerController@bannerHomeSmallPost')->name('bannerHome.smallPost');
+  Route::get('/add/banner/home/small/delete/{banner_id}', 'BannerController@bannerHomeSmallDelete')->name('bannerHome.smallDelete');
+
+
+  Route::get('/add/banner/home/middle', 'BannerController@bannerHomeMiddle')->name('bannerHome.middle');
+  Route::post('/add/banner/home/middle/post', 'BannerController@bannerHomeMiddlePost')->name('bannerHome.middlePost');
+  Route::get('/add/banner/home/middle/delete/{banner_id}', 'BannerController@bannerHomeMiddleDelete')->name('bannerHome.middleDelete');
+
+
+  Route::get('/add/banner/home/footer/big', 'BannerController@bannerFooterBig')->name('bannerFooter.big');
+  Route::post('/add/banner/home/footer/post', 'BannerController@bannerFooterBigPost')->name('bannerFooter.bigPost');
+  Route::get('/add/banner/home/footer/big/delete/{banner_id}', 'BannerController@bannerFooterBigDelete')->name('bannerFooter.bigDelete');
+
+
+  Route::get('/add/banner/home/footer/small', 'BannerController@bannerFooterSmall')->name('bannerFooter.small');
+  Route::post('/add/banner/home/footer/small/post', 'BannerController@bannerFooterSmallPost')->name('bannerFooter.smallPost');
+  Route::get('/add/banner/home/footer/delete/{banner_id}', 'BannerController@bannerFooterSmallDelete')->name('bannerFooter.smallDelete');
+
+  Route::get('/add/banner/product/big', 'BannerController@bannerProductBig')->name('bannerProduct.big');
+  Route::post('/add/banner/product/big/post', 'BannerController@bannerProductBigPost')->name('bannerProduct.bigPost');
+  Route::get('/add/banner/product/delete/{banner_id}', 'BannerController@bannerProductBigDelete')->name('bannerProduct.bigDelete');
+
+// END BannerController
