@@ -79,7 +79,7 @@ class FrontendController extends Controller
         $subject = $request->subject;
         $message = $request->message;
 
-        Mail::to('spu.rahman@gmail.com')->send(new ContactMailer($name, $email, $subject, $message));
+        Mail::to('info@ekomalls.com')->send(new ContactMailer($name, $email, $subject, $message));
 
         return back()->withSuccess('Thank you for contacting us.We will get back to you as soon as possible');
     }
