@@ -50,6 +50,11 @@
         return App\Cart::where('ip_address', request()->ip())->count();
     }
 
+    function wishlistTotal()
+    {
+        return App\Wishlist::where('ip_address', request()->ip())->count();
+    }
+
     function cartItems()
     {
         return App\Cart::where('ip_address', request()->ip())->get();
@@ -181,6 +186,21 @@
         $average = App\Order_list::where('product_id', $product_id)->whereNotNull('star')->sum('star')/App\Order_list::where('product_id', $product_id)->whereNotNull('star')->count();
         return floor($average);
 
+    }
+
+    function naira()
+    {
+        return 390;
+    }
+    
+    function euro()
+    {
+        return 0.90;
+    }
+
+    function kr()
+    {
+        return 10;
     }
 
 

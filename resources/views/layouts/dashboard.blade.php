@@ -95,6 +95,8 @@
             <li class="nav-item"><a href="{{ route('sale.cod') }}" class="nav-link">Cash on Delivery</a></li>
             <li class="nav-item"><a href="{{ route('sale.card') }}" class="nav-link">Paid with Card</a></li>
             <li class="nav-item"><a href="{{ route('sale.paypal') }}" class="nav-link">Paid by PayPal</a></li>
+            <li class="nav-item"><a href="{{ route('sale.wallet') }}" class="nav-link">Paid by Ekowallet</a></li>
+            <li class="nav-item"><a href="{{ route('sale.bank') }}" class="nav-link">Paid by Bank</a></li>
           </ul>
 
           <a href="{{ route('category.index') }}" class="sl-menu-link  @yield('category-active')">
@@ -133,6 +135,12 @@
               <span class="menu-item-label">User Wallets</span>
             </div><!-- menu-item -->
           </a><!-- sl-menu-link -->
+          <a href="{{ route('contacts.index') }}" class="sl-menu-link  @yield('contact')">
+            <div class="sl-menu-item">
+              <i class="fas fa-envelope tx-24"></i>
+              <span class="menu-item-label">Contact Page queries</span>
+            </div><!-- menu-item -->
+          </a><!-- sl-menu-link -->
           <a href="{{ route('about.index') }}" class="sl-menu-link  @yield('about')">
             <div class="sl-menu-item">
               <i class="fas fa-info tx-24"></i>
@@ -151,7 +159,12 @@
               <span class="menu-item-label">Policy</span>
             </div><!-- menu-item -->
           </a><!-- sl-menu-link -->
-
+          <a href="{{ route('toc.index') }}" class="sl-menu-link  @yield('toc')">
+            <div class="sl-menu-item">
+              <i class="fab fa-centos tx-22"></i>
+              <span class="menu-item-label">Terms & Conditions</span>
+            </div><!-- menu-item -->
+          </a><!-- sl-menu-link -->
           {{-- Master Admin menu End --}}
 
 
@@ -183,6 +196,8 @@
             <li class="nav-item"><a href="{{ route('sale.cod') }}" class="nav-link">Cash on Delivery</a></li>
             <li class="nav-item"><a href="{{ route('sale.card') }}" class="nav-link">Paid with Card</a></li>
             <li class="nav-item"><a href="{{ route('sale.paypal') }}" class="nav-link">Paid by PayPal</a></li>
+            <li class="nav-item"><a href="{{ route('sale.wallet') }}" class="nav-link">Paid by Ekowallet</a></li>
+            <li class="nav-item"><a href="{{ route('sale.bank') }}" class="nav-link">Paid by Bank</a></li>
           </ul>
           <a href="{{ route('category.index') }}" class="sl-menu-link @yield('category-active')">
             <div class="sl-menu-item">
@@ -220,6 +235,12 @@
               <span class="menu-item-label">User Wallets</span>
             </div><!-- menu-item -->
           </a><!-- sl-menu-link -->
+          <a href="{{ route('contacts.index') }}" class="sl-menu-link  @yield('contact')">
+            <div class="sl-menu-item">
+              <i class="fas fa-envelope tx-24"></i>
+              <span class="menu-item-label">Contact Page queries</span>
+            </div><!-- menu-item -->
+          </a><!-- sl-menu-link -->
           <a href="{{ route('about.index') }}" class="sl-menu-link  @yield('about')">
             <div class="sl-menu-item">
               <i class="fas fa-info tx-24"></i>
@@ -236,6 +257,12 @@
             <div class="sl-menu-item">
               <i class="fas fa-info tx-22"></i>
               <span class="menu-item-label">Policy</span>
+            </div><!-- menu-item -->
+          </a><!-- sl-menu-link -->
+          <a href="{{ route('toc.index') }}" class="sl-menu-link  @yield('toc')">
+            <div class="sl-menu-item">
+              <i class="fab fa-centos tx-22"></i>
+              <span class="menu-item-label">Terms & Conditions</span>
             </div><!-- menu-item -->
           </a><!-- sl-menu-link -->
 
@@ -349,6 +376,7 @@
           </div><!-- dropdown -->
         </nav>
         <div class="navicon-right">
+          @if(user_role() == 1 || user_role() == 0)
           <a id="btnRightMenu" href="" class="pos-relative">
             <i class="icon ion-ios-bell-outline"></i>
             <!-- start: if statement -->
@@ -357,6 +385,7 @@
             <!-- end: if statement -->
             @endif
           </a>
+          @endif
         </div><!-- navicon-right -->
       </div><!-- sl-header-right -->
     </div><!-- sl-header -->
@@ -381,6 +410,7 @@
           <div class="media-list">
             <!-- loop starts here -->
             @foreach (complains() as $complain)
+             @if(user_role() == 1 || user_role() == 0)
             <a href="{{ route('view.complain', $complain->id) }}" class="media-list-link">
               <div class="media">
                 <img src="
@@ -397,6 +427,7 @@
                 </div>
               </div><!-- media -->
             </a>
+              @endif
             @endforeach
             <!-- loop ends here -->
           </div><!-- media-list -->
@@ -408,6 +439,7 @@
         <div class="tab-pane pos-absolute a-0 mg-t-60 overflow-y-auto" id="notifications" role="tabpanel">
           <div class="media-list">
           @foreach (withdraws() as $withdraw)
+             @if(user_role() == 1 || user_role() == 0)
                 <!-- loop starts here -->
             <a href="{{ route('user.wallet') }}" class="media-list-link read">
               <div class="media pd-x-20 pd-y-15">
@@ -424,6 +456,7 @@
                 </div>
               </div><!-- media -->
             </a>
+             @endif
           @endforeach
             <!-- loop ends here -->
           </div><!-- media-list -->

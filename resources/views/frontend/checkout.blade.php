@@ -265,6 +265,12 @@
                                             <label id="EkoWallet" for="ekowallet">Pay with Ekowallet</label>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <div class="ps-checkbox">
+                                            <input name="payment_method" value="5" class="form-control" type="radio" id="bank_transfer">
+                                            <label id="bankTransfer" for="bank_transfer">Direct Bank Transfer (For Nigeria & Norway only)</label>
+                                        </div>
+                                    </div>
                                     <button type="submit" class="ps-btn ps-btn--fullwidth">Proceed to checkout</button>
                                 </div>
                             </div>
@@ -410,6 +416,11 @@
                 console.log(form)
         })
         $("#EkoWallet").click(function(){
+            var form = document.getElementById('submission')
+                form.action = "{{ route('checkout.order') }}"      
+                console.log(form)
+        })
+        $("#bankTransfer").click(function(){
             var form = document.getElementById('submission')
                 form.action = "{{ route('checkout.order') }}"      
                 console.log(form)

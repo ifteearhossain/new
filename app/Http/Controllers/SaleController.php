@@ -38,6 +38,16 @@ class SaleController extends Controller
         $orders = Order::where('payment_method', 3)->latest()->get();
         return view('backend.sale.index',compact('orders'));
     }
+    public function saleWallet ()
+    {
+        $orders = Order::where('payment_method', 4)->latest()->get();
+        return view('backend.sale.index',compact('orders'));
+    }
+    public function saleBank ()
+    {
+        $orders = Order::where('payment_method', 5)->latest()->get();
+        return view('backend.sale.index',compact('orders'));
+    }
 
     public function delivered($order_id)
     {
@@ -46,6 +56,13 @@ class SaleController extends Controller
             'payment_status'  => 2,
         ]);
         return back()->withSuccess('Order status changed to delivered');
+    }
+    public function receivedPayment($order_id)
+    {
+        Order::findOrFail($order_id)->update([
+            'payment_status'  => 2,
+        ]);
+        return back()->withSuccess('Order status changed to paid');
     }
 
     public function sendsms(Request $request)
@@ -63,6 +80,12 @@ class SaleController extends Controller
             'text' =>  $request->txt.' Thank you for shopping with Ekomalls',
           ]);
         return back()->withSuccess('Txt message sent successfully');
+    }
+
+    public function cancel($order_id)
+    {
+        Order::findOrFail($order_id)->delete();
+        return back()->withSuccess('Order Cancelled');
     }
 
   // END  

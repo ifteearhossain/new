@@ -135,7 +135,7 @@
                 {{-- Sticky Cart and Login Starts --}}
 
                 <div class="header__right">
-                    <div class="header__actions"><a class="header__extra" href="#"><i class="icon-heart"></i><span><i>0</i></span></a>
+                    <div class="header__actions"><a class="header__extra" href="{{ route('wishlist.index') }}"><i class="icon-heart"></i><span><i>{{ wishlistTotal() }}</i></span></a>
                         <div class="ps-cart--mini"><a class="header__extra" href="{{ route('cart.index') }}"><i class="icon-bag2"></i><span><i>{{ cartTotal() }}</i></span></a>
                             <div class="ps-cart__content">
                                 <div class="ps-cart__items">
@@ -250,7 +250,7 @@
                                     <ul class="mega-menu__list">
                                         <li class="current-menu-item "><a href="{{ route('frontend.about') }}">About Us</a>
                                         </li>
-                                        <li class="current-menu-item "><a href="contact-us.html">Contact</a>
+                                        <li class="current-menu-item "><a href="{{ route('frontend.contact') }}">Contact</a>
                                         </li>
                                         <li class="current-menu-item "><a href="{{ route('frontend.faq') }}">Faqs</a>
                                         </li>
@@ -270,7 +270,7 @@
                     
                     <ul class="navigation__extra">
                         <li><a href="{{ route('vendor.index') }}">Sell on Ekomalls</a></li>
-                        <li><a href="#">Contact support for full details</a></li>
+                        <li><a href="{{ route('frontend.contact') }}">Contact support for full details</a></li>
                     </ul>
                     
                     {{-- Menu Ends --}}
@@ -290,7 +290,7 @@
             <div class="header__right">
                 <ul class="navigation__extra">
                     <li><a href="#">Sell on Ekomalls</a></li>
-                    <li><a href="#">Contact support for full details</a></li>
+                    <li><a href="{{ route('frontend.contact') }}">Contact support for full details</a></li>
 
                 </ul>
             </div>
@@ -450,7 +450,7 @@
                             <ul class="mega-menu__list">
                                 <li class="current-menu-item "><a href="{{ route('frontend.about') }}">About Us</a>
                                 </li>
-                                <li class="current-menu-item "><a href="contact-us.html">Contact</a>
+                                <li class="current-menu-item "><a href="{{ route('frontend.contact') }}">Contact</a>
                                 </li>
                                 <li class="current-menu-item "><a href="{{ route('frontend.faq') }}">Faqs</a>
                                 </li>
@@ -521,7 +521,7 @@
                     <div class="widget_content">
                         <p>Call us 24/7</p>
                         <h3>00 47 92117 840</h3>
-                        <p>Krutthuset 8, 3030, Drammen  Norway <br><a href="#">info@ekomalls.com</span></a></p>
+                        <p>Krutthuset 8, 3030, Drammen  Norway <br><a href="mailto::info@ekomalls.com">info@ekomalls.com</span></a></p>
                         <ul class="ps-list--social">
                             <li><a class="facebook" href="https://www.facebook.com/eko.malls.3" target="_blank"><i class="fa fa-facebook"></i></a></li>
                             <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
@@ -534,7 +534,7 @@
                     <h4 class="widget-title">Quick links</h4>
                     <ul class="ps-list--link">
                         <li><a href="{{ route('frontend.policy') }}">Policy</a></li>
-                        <li><a href="#">Term & Condition</a></li>
+                        <li><a href="{{ route('frontend.term') }}">Term & Condition</a></li>
                         <li><a href="{{ route('frontend.faq') }}">FAQs</a></li>
                     </ul>
                 </aside>
@@ -542,7 +542,7 @@
                     <h4 class="widget-title">Company</h4>
                     <ul class="ps-list--link">
                         <li><a href="{{ route('frontend.about') }}">About Us</a></li>
-                        <li><a href="contact-us.html">Contact</a></li>
+                        <li><a href="{{ route('frontend.contact') }}">Contact</a></li>
                     </ul>
                 </aside>
                 <aside class="widget widget_footer">

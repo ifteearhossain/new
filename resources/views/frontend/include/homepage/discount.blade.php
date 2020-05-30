@@ -25,9 +25,9 @@
                     <div class="ps-product__thumbnail"><a href="{{ route('product.details', $discounted->product_slug) }}"><img src="{{ asset('uploads/products/product_thumbnail_image') }}/{{ $discounted->product_thumbnail_image }}" alt=""></a>
                         <div class="ps-product__badge">-{{ floor(($discounted->product_price - $discounted->discount_price) / ($discounted->product_price) * 100)  }}%</div>
                         <ul class="ps-product__actions">
-                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
+                            <li><a href="{{ route('product.details', $discounted->product_slug) }}" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                             <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview{{ $discounted->id }}"><i class="icon-eye"></i></a></li>
-                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
+                            <li><a href="{{ route('add.wish', $discounted->id) }}" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
                         </ul>
                     </div>
                     <div class="ps-product__container">

@@ -340,7 +340,7 @@ class CheckoutController extends Controller
                         'coupon_name'               =>  $request->coupon_name,     
                         'total'                     =>  $request->total,
                         'payment_method'            =>  $request->payment_method,           
-                        'payment_status'            =>  1,
+                        'payment_status'            =>  2,
                         'created_at'                =>  Carbon::now(),         
         
                       ]);
@@ -375,8 +375,68 @@ class CheckoutController extends Controller
                   return redirect('/cart')->withErrors("You do not have sufficient balance in your wallet.Please try different payment methods.");
                 }
            }
+           elseif($request->payment_method == 5)
+                  {
+                           $order = Order::create([
+       
+                               'user_id'                   =>  Auth::id(),
+                               'billing_fullname'          =>  $request->billing_fullname,         
+                               'billing_email'             =>  $request->billing_email,    
+                               'country_id'                =>  $request->country_id,
+                               'state_id'                  =>  $request->state_id,
+                               'city_id'                   =>  $request->city_id,
+                               'areacode'                  =>  $request->areacode,
+                               'phone_number'              =>  $request->phone_number,
+                               'address'                   =>  $request->address,
+                               'billing_zipcode'           =>  $request->billing_zipcode,
+                               'shipping_fullname'         =>  $request->billing_fullname,    
+                               'shipping_email'            =>  $request->billing_email, 
+                               'shipping_country'          =>  $request->shipping_country,   
+                               'shipping_phone_number'     =>  $request->phone_number,       
+                               'shipping_address'          =>  $request->address,   
+                               'shipping_zipcode'          =>  $request->billing_zipcode,   
+                               'notes'                     =>  $request->notes,
+                               'sub_total'                 =>  $request->sub_total,       
+                               'coupon_name'               =>  $request->coupon_name,     
+                               'total'                     =>  $request->total,
+                               'payment_method'            =>  $request->payment_method,           
+                               'payment_status'            =>  0,
+                               'created_at'                =>  Carbon::now(),         
+               
+                             ]);
+                             
+                          foreach(cartItems() as $item)
+                          {
+                              Order_list::insert([
+                               'user_id'     => Auth::id(),
+                               'order_id'    => $order->id,
+                               'product_id'  => $item->product_id,
+                               'shop_id'     => $item->cartProduct->shop_id,
+                               'quantity'    => $item->quantity,
+                               'created_at'  => Carbon::now(),
+                              ]);
+                           
+                              Cart::find($item->id)->delete();
+           
+                              Product::where('id', $item->product_id)->decrement('product_quantity', $item->quantity);
+                          }
+           
+                               Nexmo::message()->send([
+                                   'to'   =>  $request->areacode.$request->phone_number ,
+                                   'from' => 'Ekomalls',
+                                   'text' => 'Your Order number is #'.$order->id.'.Thank you for shopping with Ekomalls',
+                               ]);
+                   
+                           return redirect('/banktransfer')->withSuccess('Your order number is #'.$order->id.'. Please send us a copy of your payment with your order number to confirm the order');
+       
+                       }
         }
 
+       } 
+
+       public function bank()
+       {
+           return view('frontend.banktransfer');
        }
     
 

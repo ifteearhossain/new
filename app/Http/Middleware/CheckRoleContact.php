@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class CheckRoleSale
+class CheckRoleContact
 {
     /**
      * Handle an incoming request.
@@ -15,10 +15,10 @@ class CheckRoleSale
      */
     public function handle($request, Closure $next)
     {
-        if(user_role() == 3 || user_role() == 2)
+        if(user_role() == 2 || user_role() == 3)
         {
-          return back();
-        }
+            return back();
+        }    
         return $next($request);
     }
 }

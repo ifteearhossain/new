@@ -66,9 +66,9 @@
                                                  <div class="ps-product__badge">-{{ floor(($product->product_price - $product->discount_price)/($product->product_price) * 100) }}%</div>
                                                  @endif
                                                 <ul class="ps-product__actions">
-                                                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
+                                                    <li><a href="{{ route('product.details', $product->product_slug) }}" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                                                     <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview{{ $product->id }}"><i class="icon-eye"></i></a></li>
-                                                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
+                                                    <li><a href="{{ route('add.wish', $product->id) }}" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
                                                 </ul>
                                             </div>
                                             <div class="ps-product__container"><a class="ps-product__vendor" href="
@@ -203,7 +203,7 @@
                                                 <button class="ps-btn" type="submit">Add to cart</button>
                                             </form>
                                             <ul class="ps-product__actions">
-                                                <li><a href="#"><i class="icon-heart"></i> Wishlist</a></li>
+                                                <li><a href="{{ route('add.wish', $product->id) }}"><i class="icon-heart"></i> Wishlist</a></li>
                                             </ul>
                                         </div>
                                     </div>

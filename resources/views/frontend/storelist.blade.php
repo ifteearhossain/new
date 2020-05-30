@@ -50,7 +50,7 @@
                                             <h6>Total Products: {{ $store->getproduct->count() }}</h6>
                                             <p>With Ekomalls since : {{ $store->created_at->format('d-M-Y') }}</p>
                                             <p>{!! $store->shop_address !!}</p>
-                                            <div class="ps-block__inquiry"><a href="#"><i class="icon-question-circle"></i> inquiry</a></div>
+                                            <div class="ps-block__inquiry"><a href="{{ route('frontend.contact') }}"><i class="icon-question-circle"></i> inquiry</a></div>
                                         </div>
                                     </article>
                                 </div>

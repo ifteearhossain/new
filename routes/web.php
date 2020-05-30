@@ -31,6 +31,9 @@ Route::get('/search', 'FrontendController@search')->name('homePage.search');
 Route::get('/about/us/', 'FrontendController@about')->name('frontend.about');
 Route::get('/frequently/asked/questions', 'FrontendController@faq')->name('frontend.faq');
 Route::get('/policy', 'FrontendController@policy')->name('frontend.policy');
+Route::get('/contact', 'FrontendController@contact')->name('frontend.contact');
+Route::post('/contact/post', 'FrontendController@contactPost')->name('frontend.contactPost');
+Route::get('/terms/and/conditions', 'FrontendController@terms')->name('frontend.term');
 
 // END FrontendController
 
@@ -56,11 +59,18 @@ Route::get('cart/{coupon_name}/coupon-trxID029', 'CartController@index');
 
 // END CartController
 
+// WishlistController
+  Route::get('/wishlist', 'WishlistController@index')->name('wishlist.index');
+  Route::get('/add/{product_id}/wish', 'WishlistController@addwish')->name('add.wish');
+  Route::get('/remove/{id}/wish', 'WishlistController@removewish')->name('remove.wish');
+// END WishlistController
+
 // CheckoutController 
 
 Route::post('checkout', 'CheckoutController@index')->name('checkout.index');
 Route::get('checkout', 'CheckoutController@index')->name('checkout.index');
 Route::post('order', 'CheckoutController@order')->name('checkout.order');
+Route::get('/banktransfer','CheckoutController@bank')->name('bank.transfer');
 
 // END CheckoutController 
 
@@ -176,8 +186,12 @@ Route::post('/pay/seller/', 'HomeController@payseller')->name('pay.seller');
   Route::get('/cod/sales', 'SaleController@saleCod')->name('sale.cod');
   Route::get('/card/sales', 'SaleController@saleCard')->name('sale.card');
   Route::get('/paypal/sales', 'SaleController@salePayPal')->name('sale.paypal');
+  Route::get('/bank/sales', 'SaleController@saleBank')->name('sale.bank');
+  Route::get('/wallet/sales', 'SaleController@saleWallet')->name('sale.wallet');
   Route::get('/delivered/{order_id}/order', 'SaleController@delivered')->name('sale.delivered');
+  Route::get('/received/{order_id}/payment', 'SaleController@receivedPayment')->name('sale.receivedPayment');
   Route::post('/send/sms/', 'SaleController@sendsms');
+  Route::get('/sale/{order_id}/cancel', 'SaleController@cancel')->name('sale.cancel');
 
 // END SaleController  
 
@@ -227,3 +241,11 @@ Route::get('/corona-update', 'CoronaController@index');
 // PolicyController 
   Route::resource('policies', 'PolicyController' );
 // END PolicyController
+
+// ContactController 
+  Route::resource('contacts', 'ContactController');
+// END ContactController
+
+// TocController
+  Route::resource('toc', 'TocController');
+// END TocController

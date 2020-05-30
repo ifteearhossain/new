@@ -75,5 +75,7 @@ class Kernel extends HttpKernel
         'checkroleabout' => \App\Http\Middleware\CheckRoleAbout::class,
         'checkrolefaq' => \App\Http\Middleware\CheckRoleFaq::class,
         'checkrolepolicy' => \App\Http\Middleware\CheckRolePolicy::class,
+        'checkroletoc' => \App\Http\Middleware\CheckRoleToc::class,
+        'checkrolecontact' => \App\Http\Middleware\CheckRoleContact::class,
     ];
 }

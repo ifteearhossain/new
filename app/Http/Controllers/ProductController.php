@@ -221,7 +221,7 @@ class ProductController extends Controller
         
             $product->product_name                  = $request->product_name;
             $product->product_price                 = $request->product_price;
-            $product->discount_price                 = $request->discount_price;
+            $product->discount_price                = $request->discount_price;
             $product->product_brand                 = $request->product_brand;
             $product->category_id                   = $request->category_id;
             $product->sub_category_id               = $request->sub_category_id;

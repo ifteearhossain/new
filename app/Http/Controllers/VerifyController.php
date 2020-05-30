@@ -174,13 +174,134 @@ class VerifyController extends Controller
      
                  ]);
              }
-             
-          }
+             elseif($request->payment_method == 4)
+             {
+                  $user = Auth::user();
+                  $user->balance;
+      
+                  $item = Order::first();
+                  $item->getAmountProduct($user);
+  
+      
+                  if ($user->safePay($item)) 
+                  // try to buy again )
+                  {
+                    
+                      $order = Order::create([
+  
+                          'user_id'                   =>  Auth::id(),
+                          'billing_fullname'          =>  $request->billing_fullname,         
+                          'billing_email'             =>  $request->billing_email,    
+                          'country_id'                =>  $request->country_id,
+                          'state_id'                  =>  $request->state_id,
+                          'city_id'                   =>  $request->city_id,
+                          'areacode'                  =>  $request->areacode,
+                          'phone_number'              =>  $request->phone_number,
+                          'address'                   =>  $request->address,
+                          'billing_zipcode'           =>  $request->billing_zipcode,
+                          'shipping_fullname'         =>  $request->billing_fullname,    
+                          'shipping_email'            =>  $request->billing_email, 
+                          'shipping_country'          =>  $request->shipping_country,   
+                          'shipping_phone_number'     =>  $request->phone_number,       
+                          'shipping_address'          =>  $request->address,   
+                          'shipping_zipcode'          =>  $request->billing_zipcode,   
+                          'notes'                     =>  $request->notes,
+                          'sub_total'                 =>  $request->sub_total,       
+                          'coupon_name'               =>  $request->coupon_name,     
+                          'total'                     =>  $request->total,
+                          'payment_method'            =>  $request->payment_method,           
+                          'payment_status'            =>  2,
+                          'created_at'                =>  Carbon::now(),         
+          
+                        ]);
+                        
+                     foreach(cartItems() as $item)
+                     {
+                         Order_list::insert([
+                          'user_id'     => Auth::id(),
+                          'order_id'    => $order->id,
+                          'product_id'  => $item->product_id,
+                          'shop_id'     => $item->cartProduct->shop_id,
+                          'quantity'    => $item->quantity,
+                          'created_at'  => Carbon::now(),
+                         ]);
+                      
+                         Cart::find($item->id)->delete();
+      
+                         Product::where('id', $item->product_id)->decrement('product_quantity', $item->quantity);
+                     }
+      
+                          Nexmo::message()->send([
+                              'to'   =>  $request->areacode.$request->phone_number ,
+                              'from' => 'Ekomalls',
+                              'text' => 'Your Order number is #'.$order->id.'.Thank you for shopping with Ekomalls',
+                          ]);
+              
+                    return redirect('/')->withSuccess('Order has been placed.Our support will get in touch with you regarding the delivery. Thank you for shopping with ekomalls');
+  
+                  }
+                }
+                  elseif($request->payment_method == 5)
+                  {
+                           $order = Order::create([
+       
+                               'user_id'                   =>  Auth::id(),
+                               'billing_fullname'          =>  $request->billing_fullname,         
+                               'billing_email'             =>  $request->billing_email,    
+                               'country_id'                =>  $request->country_id,
+                               'state_id'                  =>  $request->state_id,
+                               'city_id'                   =>  $request->city_id,
+                               'areacode'                  =>  $request->areacode,
+                               'phone_number'              =>  $request->phone_number,
+                               'address'                   =>  $request->address,
+                               'billing_zipcode'           =>  $request->billing_zipcode,
+                               'shipping_fullname'         =>  $request->billing_fullname,    
+                               'shipping_email'            =>  $request->billing_email, 
+                               'shipping_country'          =>  $request->shipping_country,   
+                               'shipping_phone_number'     =>  $request->phone_number,       
+                               'shipping_address'          =>  $request->address,   
+                               'shipping_zipcode'          =>  $request->billing_zipcode,   
+                               'notes'                     =>  $request->notes,
+                               'sub_total'                 =>  $request->sub_total,       
+                               'coupon_name'               =>  $request->coupon_name,     
+                               'total'                     =>  $request->total,
+                               'payment_method'            =>  $request->payment_method,           
+                               'payment_status'            =>  0,
+                               'created_at'                =>  Carbon::now(),         
+               
+                             ]);
+                             
+                          foreach(cartItems() as $item)
+                          {
+                              Order_list::insert([
+                               'user_id'     => Auth::id(),
+                               'order_id'    => $order->id,
+                               'product_id'  => $item->product_id,
+                               'shop_id'     => $item->cartProduct->shop_id,
+                               'quantity'    => $item->quantity,
+                               'created_at'  => Carbon::now(),
+                              ]);
+                           
+                              Cart::find($item->id)->delete();
+           
+                              Product::where('id', $item->product_id)->decrement('product_quantity', $item->quantity);
+                          }
+           
+                               Nexmo::message()->send([
+                                   'to'   =>  $request->areacode.$request->phone_number ,
+                                   'from' => 'Ekomalls',
+                                   'text' => 'Your Order number is #'.$order->id.'.Thank you for shopping with Ekomalls',
+                               ]);
+                   
+                           return redirect('/banktransfer')->withSuccess('Your order number is #'.$order->id.'. Please send us a copy of your payment with your order number to confirm the order');
+       
+                       }
           else 
           {
               return redirect('/checkout')->withErrors('Phone Verification failed please try again');
           }
     }
+}
 
     public function userVerify(Request $request)
     {

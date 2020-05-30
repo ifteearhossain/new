@@ -58,6 +58,7 @@
                     <th>Payment Status</th>
                     <th>Order Status</th>
                     <th>Send Sms</th>
+                    <th>Cancel</th>
                   </tr>
                 </thead>
                 <tbody id="myTable">
@@ -76,6 +77,8 @@
                     <td>
                         @if($order->payment_status == 1)
                             Due
+                        @elseif($order->payment_status == 0)
+                           <a href="{{ route('sale.receivedPayment', $order->id) }}" class="btn btn-secondary">Confirm</a>
                         @else 
                             Paid
                         @endif
@@ -89,6 +92,9 @@
                     </td>
                     <td> 
                             <button onclick="customerSmsHandler({{ $order->ordered_by->id }})" class="btn btn-warning">sms customer</button>
+                    </td>
+                    <td>
+                      <a href="{{ route('sale.cancel', $order->id) }}" class="btn btn-danger">Cancel</a>
                     </td>
                   </tr>
                    @empty

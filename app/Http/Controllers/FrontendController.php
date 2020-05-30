@@ -2,14 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use Mail;
 use App\Faq;
+use App\Toc;
 use App\User;
 use App\About;
 use App\Policy;
+use App\Contact;
 use App\Product;
 use App\Category;
+use Carbon\Carbon;
+use App\Mail\ContactMailer;
 use Illuminate\Http\Request;
 use Spatie\QueryBuilder\QueryBuilder;
+use App\Http\Requests\ContactRequest\ContactFormRequests;
 
 class FrontendController extends Controller
 {
@@ -59,6 +65,30 @@ class FrontendController extends Controller
         return view('frontend.policy', compact('policies'));
     }
 
+    public function contact()
+    {
+        return view('frontend.contact');
+    }
+
+    public function contactPost(ContactFormRequests $request)
+    {
+        Contact::insert($request->except('_token') + ['created_at' => Carbon::now()]);
+
+        $name    = $request->name;
+        $email   = $request->email;
+        $subject = $request->subject;
+        $message = $request->message;
+
+        Mail::to('spu.rahman@gmail.com')->send(new ContactMailer($name, $email, $subject, $message));
+
+        return back()->withSuccess('Thank you for contacting us.We will get back to you as soon as possible');
+    }
+
+    public function terms()
+    {
+       $terms = Toc::all();
+       return view('frontend.terms', compact('terms'));
+    }
 
     // END
 }

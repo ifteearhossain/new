@@ -10,7 +10,7 @@
         <div class="container">
             <aside class="ps-block--store-banner">
                 <div class="ps-block__content bg--cover" data-background="{{ asset('uploads/shops/cover') }}/{{ $store->shop_cover_image }}">
-                    <h3>{{ $store->shop_name }}</h3><a class="ps-block__inquiry" href="#"><i class="fa fa-question"></i> Inquiry</a>
+                    <h3>{{ $store->shop_name }}</h3><a class="ps-block__inquiry" href="{{ route('frontend.contact') }}"><i class="fa fa-question"></i> Inquiry</a>
                 </div>
                 <div class="ps-block__user">
                     <div class="ps-block__user-avatar"><img src="
@@ -140,8 +140,7 @@
                                                 <button class="ps-btn" type="submit">Add to cart</button>
                                             </form>
                                                 <ul class="ps-product__actions">
-                                                    <li><a href="#"><i class="icon-heart"></i> Wishlist</a></li>
-                                                    <li><a href="#"><i class="icon-chart-bars"></i> Compare</a></li>
+                                                    <li><a href="{{ route('add.wish', $product->id) }}"><i class="icon-heart"></i> Wishlist</a></li>
                                                 </ul>
                                             </div>
                                         </div>

@@ -82,7 +82,7 @@
                                 </select><span>({{ reviewCount($product->id) }} review)</span>
                                 </div>
                             </div>
-                            <h4 class="ps-product__price sale">${{ ($product->discount_price != null)? $product->discount_price : $product->product_price }}
+                            <h4 class="ps-product__price sale">${{ ($product->discount_price != null)? number_format($product->discount_price) : number_format($product->product_price) }}
                                 @if($product->discount_price  != null)
                                 <del> ${{ $product->product_price }}</del><small> (-{{ floor(($product->product_price - $product->discount_price)/($product->product_price)* 100) }}%)</small>                                    
                                 @endif
@@ -168,7 +168,7 @@
                                     @endif    
                                 </p>
                                 @if($product->shop_id != null)
-                                <a href="#">More Products from {{ $product->getshop->shop_name }}</a>
+                                <a href="{{ route('single.store', $product->getshop->shop_name) }}">More Products from {{ $product->getshop->shop_name }}</a>
                                 @endif
                             </div>
                             <div class="ps-tab" id="tab-4">
@@ -294,9 +294,9 @@
                                <div class="ps-product__badge">-{{ floor(($brand->product_price - $brand->discount_price)/($brand->product_price) * 100) }}%</div>
                                @endif
                                 <ul class="ps-product__actions">
-                                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
+                                    <li><a href="{{ route('product.details', $brand->product_slug) }}" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                                     <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview{{ $brand->id }}"><i class="icon-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
+                                    <li><a href="{{ route('add.wish', $brand->id) }}" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
                                 </ul>
                             </div>
                             <div class="ps-product__container">
@@ -331,7 +331,7 @@
                                         @endif
                                     </select><span>({{ reviewCount($brand->id) }} review)</span>
                                     </div>
-                                    <p class="ps-product__price sale">${{ ($brand->discount_price != null) ? $brand->discount_price : $brand->product_price }}
+                                    <p class="ps-product__price sale">${{ ($brand->discount_price != null) ? number_format($brand->discount_price) : number_format($brand->product_price) }}
                                     @if($brand->discount_price != null)
                                       <del>${{ $brand->product_price }} </del>
                                     @endif
@@ -366,9 +366,9 @@
                            <div class="ps-product__badge">-{{ floor(($brand->product_price - $brand->discount_price)/($brand->product_price) * 100) }}%</div>
                            @endif
                             <ul class="ps-product__actions">
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
+                                <li><a href="{{ route('product.details', $brand->product_slug) }}" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                                 <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview{{ $brand->id }}"><i class="icon-eye"></i></a></li>
-                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
+                                <li><a href="{{ route('add.wish', $brand->id) }}" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
                             </ul>
                         </div>
                         <div class="ps-product__container">
@@ -410,7 +410,7 @@
                                 </p>
                             </div>
                             <div class="ps-product__content hover"><a class="ps-product__title" href="{{ route('product.details', $brand->product_slug) }}">{{ $brand->product_name }}</a>
-                                <p class="ps-product__price sale">${{ ($brand->discount_price != null) ? $brand->discount_price : $brand->product_price }}
+                                <p class="ps-product__price sale">${{ ($brand->discount_price != null) ? number_format($brand->discount_price) : number_format($brand->product_price) }}
                                 @if($brand->discount_price != null)
                                     <del>${{ $brand->product_price }} </del>
                                 @endif
@@ -465,8 +465,8 @@
                                         </select><span>({{ reviewCount($brand->id) }} review)</span>
                                     </div>
                                 </div>
-                                <h4 class="ps-product__price sale">${{ ($brand->discount_price != null) ? $brand->discount_price : $brand->product_price }} 
-                                    @if($product->discount_price != null)
+                                <h4 class="ps-product__price sale">${{ ($brand->discount_price != null) ? number_format($brand->discount_price) : number_format($brand->product_price) }}
+                                    @if($brand->discount_price != null)
                                      <del>${{ $brand->product_price }} </del>
                                     @endif
                                     @if($brand->discount_price != null)

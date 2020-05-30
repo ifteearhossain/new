@@ -4,17 +4,17 @@
 @extends('layouts.dashboard')
 
 @section('title')
- Ekomalls | Policy
+ Ekomalls | Terms and Conditions
 @endsection
 
-@section('policy')
+@section('toc')
   active
 @endsection
 
 @section('breadcrumb')
   <nav class="breadcrumb sl-breadcrumb">
     <a class="breadcrumb-item" href="{{ route('home') }}">Home</a>
-    <span class="breadcrumb-item active">Policy</span>
+    <span class="breadcrumb-item active">Terms and Conditions</span>
   </nav>
 @endsection
 
@@ -29,25 +29,25 @@
                 </div>
               @endif
               <div class="card-header">
-                <h1 class="text-center">Add Policy</h1>
+                <h1 class="text-center">Add T&C</h1>
               </div>
               <div class="card-body">
-                <form class="form-group" action="{{ route('policies.store') }}" method="post">
+                <form class="form-group" action="{{ route('toc.store') }}" method="post">
                   @csrf
                   <div class="py-3">
-                    <input class="form-control" type="text" name="policy_heading" placeholder="Enter heading?" value="{{ old('policy_heading') }}">
-                    @error('policy_heading')
+                    <input class="form-control" type="text" name="toc_heading" placeholder="Enter heading?" value="{{ old('toc_heading') }}">
+                    @error('toc_heading')
                       <small class="text-danger">{{ $message }}</small>
                     @enderror
                   </div>
                   <div class="py-3">
-                    <input class="form-control" type="text" name="policy_details" placeholder="Answer" value="{{ old('policy_details') }}">
-                    @error ('policy_details')
+                    <input class="form-control" type="text" name="toc_details" placeholder="Answer" value="{{ old('toc_details') }}">
+                    @error ('toc_details')
                       <small class="text-danger">{{ $message }}</small>
                     @enderror
                   </div>
                   <div class="py-3">
-                    <button type="submit" class="btn btn-primary">Add Policy</button>
+                    <button type="submit" class="btn btn-primary">Add Terms & Conditions</button>
                   </div>
                   @if($errors->all())
                     <div class="alert alert-danger">
@@ -63,29 +63,29 @@
       <div class="col-lg-12 m-auto py-3">
         <div class="card">
           <div class="card-header">
-            <h1 class="text-center">All policy's</h1>
+            <h1 class="text-center">All Terms & Conditions</h1>
           </div>
           <div class="card-body">
             <table class="table table-striped">
               <tr>
                 <th>SL</th>
-                <th>Policy Heading</th>
-                <th>Policy Details</th>
+                <th>toc Heading</th>
+                <th>toc Details</th>
                 <th>Created at</th>
                 <th>Action</th>
                 <th></th>
               </tr>
-              @forelse($policies as $index => $policy)
+              @forelse($tocs as $index => $toc)
               <tr>
-                 <td>{{ $policies->firstItem() + $index }}</td>
-                 <td>{{ $policy->policy_heading }}</td>
-                 <td>{{ $policy->policy_details }}</td>
-                 <td>{{ $policy->created_at->diffForHumans() }}</td>
+                 <td>{{ $tocs->firstItem() + $index }}</td>
+                 <td>{{ $toc->toc_heading }}</td>
+                 <td>{{ $toc->toc_details }}</td>
+                 <td>{{ $toc->created_at->diffForHumans() }}</td>
                  <td>
-                   <a href="{{ route('policies.edit', $policy->id) }}" class="btn btn-warning">Edit</a>
+                   <a href="{{ route('toc.edit', $toc->id) }}" class="btn btn-warning">Edit</a>
                  </td>
                  <td>
-                <form action="{{ route('policies.destroy', $policy->id) }}" method="post">
+                <form action="{{ route('toc.destroy', $toc->id) }}" method="post">
                     @csrf 
                     {{ method_field('DELETE') }}
                     <button type="submit" class="btn btn-danger">Delete</button>
@@ -100,7 +100,7 @@
 
 
             </table>
-                {{ $policies->links() }}
+                {{ $tocs->links() }}
           </div>
         </div>
       </div>

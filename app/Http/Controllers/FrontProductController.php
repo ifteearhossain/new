@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
+use App\Order_list;
 use App\SubCategory;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FrontProductController extends Controller
 {
@@ -15,7 +17,14 @@ class FrontProductController extends Controller
         $total_products = Product::all()->count();
         $categories = Category::latest()->limit(8)->get();
         $recommended_products = Product::whereNotNull('discount_price')->get();
-        return view('frontend.products', compact('all_products', 'categories', 'recommended_products','total_products'));
+        // $bestsellers = Order_list::with('get_product_info_via_order_list')->groupBy('id')->orderBy('product_id', 'desc')->get();
+        $bestsellers = Order_list::with('get_product_info_via_order_list')
+                    ->select('product_id', DB::raw('count(*) as total'))
+                    ->groupBy('product_id')
+                    ->orderBy('total', 'desc')
+                    ->take(10)
+                    ->get();
+        return view('frontend.products', compact('all_products', 'categories', 'recommended_products','total_products', 'bestsellers'));
     }
     public function indexAtoZ()
     {

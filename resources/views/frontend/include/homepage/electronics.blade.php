@@ -16,9 +16,9 @@
                        <div class="ps-product__badge">-{{ floor(($electronics->product_price - $electronics->discount_price)/($electronics->product_price) * 100) }}%</div>
                        @endif
                        <ul class="ps-product__actions">
-                           <li><a href="#" data-toggle="tooltip" data-placement="top" title="Cart"><i class="icon-bag2"></i></a></li>
+                           <li><a href="{{ route('product.details', $electronics->product_slug) }}" data-toggle="tooltip" data-placement="top" title="Read more"><i class="icon-bag2"></i></a></li>
                            <li><a data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview{{ $electronics->id }}"><i class="icon-eye"></i></a></li>
-                           <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
+                           <li><a href="{{ route('add.wish', $electronics->id) }}" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
                        </ul>
                    </div>
                    <div class="ps-product__container"><a class="ps-product__vendor" href="
