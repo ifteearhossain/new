@@ -7,6 +7,7 @@ use Mail;
 use Image;
 use App\Shop;
 use App\User;
+use App\Country;
 use App\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -70,7 +71,8 @@ class ShopController extends Controller
        }
        else 
        {
-           return view('frontend.verifyNumber');
+           $countries = Country::all();
+           return view('frontend.verifyNumber', compact('countries'));
        }
     }
 

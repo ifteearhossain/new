@@ -24,7 +24,13 @@
                     <form action="{{ route('regular.verify') }}" method="post">
                         @csrf 
                         <div class="py-3">
-                            <input name="areacode" type="text" class="form-control" placeholder="Areacode">
+                            {{-- <input name="areacode" type="text" class="form-control" placeholder="Country code"> --}}
+                            <select class="form-control" name="areacode" id="">
+                                <option value="">-Select Your Country code--</option>
+                                @foreach ($countries as $country)
+                                    <option value="{{ $country->phonecode }}">{{ $country->name }} +{{ $country->phonecode }}</option>
+                                @endforeach
+                            </select>
                             <input name="phone_number" type="text" class="form-control" placeholder="Enter Phone number">
                         </div>
                         <div class="py-3">
